@@ -48,7 +48,7 @@ function compile_node() {
   tar xvzf $COIN_ZIP --strip=2 ${COIN_DIR}/bin/${COIN_NAME,,}d ${COIN_DIR}/bin/${COIN_NAME,,}-cli>/dev/null 2>&1
   compile_error
   rm -f $COIN_ZIP >/dev/null 2>&1
-  cp lightpaycoin* /usr/local/bin
+  cp logiscoin* /usr/local/bin
   compile_error
   strip $COIN_DAEMON $COIN_CLI
   cd -
