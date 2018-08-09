@@ -1,12 +1,12 @@
 #!/bin/bash
 
-CONFIG_FILE='lightpaycoin.conf'
-CONFIGFOLDER='/root/.lightpaycoin'
-COIN_DAEMON='/usr/local/bin/lightpaycoind'
-COIN_CLI='/usr/local/bin/lightpaycoin-cli'
-COIN_REPO='https://github.com/lpcproject/LightPayCoin/releases/download/v1.0.0.0/lightpaycoin-1.0.0-x86_64-linux-gnu.tar.gz'
-COIN_NAME='LightPayCoin'
-COIN_PORT=39797
+CONFIG_FILE='logiscoin.conf'
+CONFIGFOLDER='/root/.logiscoin'
+COIN_DAEMON='/usr/local/bin/logiscoind'
+COIN_CLI='/usr/local/bin/logiscoin-cli'
+COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v1.0.0.0/logiscoin-1.0.0-x86_64-linux-gnu.tar.gz'
+COIN_NAME='LogisCoin'
+COIN_PORT=48484
 
 NODEIP=$(curl -s4 icanhazip.com)
 
