@@ -1,5 +1,5 @@
 # LogisCoin
-Shell script to install a [LogisCoin Masternode](https://www.logiscoin.cc/) on a Linux server running Ubuntu 14.04 or 16.04. Use it on your own risk.
+Shell script to install a [LogisCoin Masternode](https://www.logiscoin.cc/) on a Linux server running Ubuntu 14.04, 16.04 or 18.04. Use it on your own risk.
 
 ***
 ## Installation:
