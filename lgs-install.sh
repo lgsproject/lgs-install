@@ -257,7 +257,7 @@ fi
 function prepare_system() {
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 apt-get update >/dev/null 2>&1
-apt-get install -y wget curl binutils >/dev/null 2>&1
+apt-get install -y wget curl ufw binutils >/dev/null 2>&1
 }
 
 function important_information() {
