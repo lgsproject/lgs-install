@@ -16,7 +16,7 @@ cd ~/lgs-install/
 git pull
 bash lgs-update.sh
 ```
-## OR
+OR
 ```
 git clone https://github.com/lgsproject/lgs-install/
 cd lgs-install
