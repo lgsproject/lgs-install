@@ -2,10 +2,18 @@
 Shell script to install a [LogisCoin Masternode](https://www.logiscoin.cc/) on a Linux server running Ubuntu 14.04, 16.04 or 18.04. Use it on your own risk.
 
 ***
-## Installation:
+## Installation (Latest Version):
 ```
 git clone https://github.com/lgsproject/lgs-install/
 cd lgs-install
+bash lgs-install.sh
+```
+***
+
+## Wallet Update to Latest Version:
+```
+cd ~/lgs-install
+git pull
 bash lgs-install.sh
 ```
 ***
