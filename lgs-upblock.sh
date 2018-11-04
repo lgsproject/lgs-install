@@ -4,13 +4,36 @@ CONFIG_FILE='logiscoin.conf'
 CONFIGFOLDER='/root/.logiscoin'
 COIN_DAEMON='/usr/local/bin/logiscoind'
 COIN_CLI='/usr/local/bin/logiscoin-cli'
-COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.0.0/logiscoin-2.0.0-x86_64-linux-gnu.tar.gz'
+#COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.0.0/logiscoin-2.0.0-x86_64-linux-gnu.tar.gz'
+COIN_REPO='https://logiscoin.cc/files/bootstrap.dat'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
+
+progressfilt () {
+  local flag=false c count cr=$'\r' nl=$'\n'
+  while IFS='' read -d '' -rn 1 c
+  do
+    if $flag
+    then
+      printf '%c' "$c"
+    else
+      if [[ $c != $cr && $c != $nl ]]
+      then
+        count=0
+      else
+        ((count++))
+        if ((count > 1))
+        then
+          flag=true
+        fi
+      fi
+    fi
+  done
+}
 
 function compile_node() {
 
@@ -33,9 +56,27 @@ function compile_node() {
   rm $CONFIGFOLDER/mncache.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/debug.log >/dev/null 2>&1
   rm $CONFIGFOLDER/db.log >/dev/null 2>&1
+  rm $CONFIGFOLDER/bootstrap.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/bootstrap.dat.old >/dev/null 2>&1
   sleep 5
   
+  echo -e "Prepare to download a new blockchain files of $COIN_NAME"
+  TMP_FOLDER=$(mktemp -d)
+  cd $TMP_FOLDER
+  wget --progress=bar:force $COIN_REPO 2>&1 | progressfilt
+  compile_error
+  mv bootstrap.dat $CONFIGFOLDER >/dev/null 2>&1
+  compile_error
+  cd - >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  sleep 5
+  clear
+  
   echo -e "Add Nodes to the configuration file (addnode=...)"
+  cat "$CONFIGFOLDER/$CONFIG_FILE" | grep -v "addnode=[0-9\.]" >> $CONFIGFOLDER/$CONFIG_FILE.tmp
+  rm $CONFIGFOLDER/$CONFIG_FILE > /dev/null 2>&1
+  touch $CONFIGFOLDER/$CONFIG_FILE > /dev/null 2>&1
+  mv $CONFIGFOLDER/$CONFIG_FILE.tmp $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=194.182.71.174" >> $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=80.211.19.47" >> $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=194.182.75.24" >> $CONFIGFOLDER/$CONFIG_FILE
@@ -96,7 +137,7 @@ echo -e "Prepare the system to update blockchain for ${GREEN}$COIN_NAME${NC} mas
 function important_information() {
  echo
  echo -e "================================================================================"
- echo -e "$COIN_NAME Masternode wallet is update blockchain and running, listening on port ${RED}$COIN_PORT${NC}."
+ echo -e "$COIN_NAME Masternode blockchain files is update, listening on port ${RED}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
    echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
@@ -108,7 +149,7 @@ function important_information() {
    echo -e "Status: ${RED}/etc/init.d/$COIN_NAME status${NC}"
  fi
  echo -e "Check if $COIN_NAME is running by using the following command:\n${RED}ps -ef | grep $COIN_DAEMON | grep -v grep${NC}"
- echo -e "The old blockchain files is deleted, wait for synchronization with the network."
+ echo -e "The old blockchain is deleted, wait for synchronization with the network."
  echo -e "After the wallet is synchronized with the network, you can run Masternodes."
  echo -e "================================================================================"
 }
