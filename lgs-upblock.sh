@@ -23,8 +23,8 @@ function compile_node() {
   sleep 7
   
   echo -e "Remove the old blockchain files from the system"
-  rm -f $CONFIGFOLDER/blocks/ >/dev/null 2>&1
-  rm -f $CONFIGFOLDER/chainstate/ >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/blocks/ >/dev/null 2>&1
+  rm -rf $CONFIGFOLDER/chainstate/ >/dev/null 2>&1
   rm $CONFIGFOLDER/mnpayments.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/fee_estimates.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/peers.dat >/dev/null 2>&1
