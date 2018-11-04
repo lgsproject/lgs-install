@@ -46,6 +46,7 @@ function compile_node() {
   
   echo -e "Remove the old $COIN_NAME wallet from the system"
   rm -f /usr/local/bin/logiscoin* >/dev/null 2>&1
+  rm $CONFIGFOLDER/banlist.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/mnpayments.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/fee_estimates.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/peers.dat >/dev/null 2>&1
