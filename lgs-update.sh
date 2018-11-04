@@ -5,6 +5,7 @@ CONFIGFOLDER='/root/.logiscoin'
 COIN_DAEMON='/usr/local/bin/logiscoind'
 COIN_CLI='/usr/local/bin/logiscoin-cli'
 COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.0.0/logiscoin-2.0.0-x86_64-linux-gnu.tar.gz'
+#COIN_REPO='https://logiscoin.cc/files/bootstrap.dat'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 
@@ -54,6 +55,8 @@ function compile_node() {
   rm $CONFIGFOLDER/mncache.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/debug.log >/dev/null 2>&1
   rm $CONFIGFOLDER/db.log >/dev/null 2>&1
+  rm $CONFIGFOLDER/bootstrap.dat >/dev/null 2>&1
+  rm $CONFIGFOLDER/bootstrap.dat.old >/dev/null 2>&1
   sleep 5
   clear
   
