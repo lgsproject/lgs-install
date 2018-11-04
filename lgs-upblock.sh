@@ -94,7 +94,7 @@ function important_information() {
    echo -e "Status: ${RED}/etc/init.d/$COIN_NAME status${NC}"
  fi
  echo -e "Check if $COIN_NAME is running by using the following command:\n${RED}ps -ef | grep $COIN_DAEMON | grep -v grep${NC}"
- echo -e "The old blockchain is deleted, wait for synchronization with the network."
+ echo -e "The old blockchain files is deleted, wait for synchronization with the network."
  echo -e "After the wallet is synchronized with the network, you can run Masternodes."
  echo -e "================================================================================"
 }
