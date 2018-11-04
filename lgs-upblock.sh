@@ -23,8 +23,8 @@ function compile_node() {
   sleep 7
   
   echo -e "Remove the old blockchain files from the system"
-  rm -rf $CONFIGFOLDER/blocks/ >/dev/null 2>&1
-  rm -rf $CONFIGFOLDER/chainstate/ >/dev/null 2>&1
+  rm -f $CONFIGFOLDER/blocks/ >/dev/null 2>&1
+  rm -f $CONFIGFOLDER/chainstate/ >/dev/null 2>&1
   rm $CONFIGFOLDER/mnpayments.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/fee_estimates.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/peers.dat >/dev/null 2>&1
@@ -32,6 +32,19 @@ function compile_node() {
   rm $CONFIGFOLDER/mncache.dat >/dev/null 2>&1
   rm $CONFIGFOLDER/debug.log >/dev/null 2>&1
   rm $CONFIGFOLDER/db.log >/dev/null 2>&1
+  sleep 5
+  
+  echo -e "Add Nodes to the configuration file (addnode=...)"
+  echo "addnode=194.182.71.174" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=80.211.19.47" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=194.182.75.24" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=217.61.109.163" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=217.61.108.17" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=80.211.246.101" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=217.61.97.206" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=185.35.67.236" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=217.61.109.44" >> $CONFIGFOLDER/$CONFIG_FILE
+  echo "addnode=207.180.233.36" >> $CONFIGFOLDER/$CONFIG_FILE
   sleep 5
   clear
   
