@@ -88,7 +88,7 @@ function compile_node() {
   echo "addnode=217.61.109.44" >> $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=207.180.233.36" >> $CONFIGFOLDER/$CONFIG_FILE
   sleep 5
-  
+
   echo -e "Start the $COIN_NAME wallet daemon"
   if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
     systemctl start $COIN_NAME.service
