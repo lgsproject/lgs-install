@@ -4,7 +4,7 @@ CONFIG_FILE='logiscoin.conf'
 CONFIGFOLDER='/root/.logiscoin'
 COIN_DAEMON='/usr/local/bin/logiscoind'
 COIN_CLI='/usr/local/bin/logiscoin-cli'
-COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v2.0.0.0/logiscoin-2.0.0-x86_64-linux-gnu.tar.gz'
+COIN_REPO='https://github.com/lgsproject/LogisCoin/releases/download/v1.0.0.0/logiscoin-1.0.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='LogisCoin'
 COIN_PORT=48484
 
@@ -151,6 +151,8 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
+staking=0
+enablezeromint=0
 port=$COIN_PORT
 EOF
 }
