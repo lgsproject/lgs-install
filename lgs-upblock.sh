@@ -81,7 +81,6 @@ function compile_node() {
   echo "addnode=217.61.97.206" >> $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=185.35.67.236" >> $CONFIGFOLDER/$CONFIG_FILE
   echo "addnode=217.61.109.44" >> $CONFIGFOLDER/$CONFIG_FILE
-  echo "addnode=207.180.233.36" >> $CONFIGFOLDER/$CONFIG_FILE
   sleep 5
 
   echo -e "Start the $COIN_NAME wallet daemon"
